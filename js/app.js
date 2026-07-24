@@ -84,7 +84,7 @@ async function generatePrompt() {
     }
 }
 
-// Call Groq API
+// Call Google Generative AI API
 async function callGroqAPI(idea, tone, apiKey) {
     const systemPrompt = `Eres un experto en la creación de prompts profesionales. Tu tarea es transformar ideas breves en prompts detallados, claros y efectivos.
 
@@ -99,36 +99,42 @@ Genera un prompt profesional que:
 
 Responde SOLO con el prompt generado, sin explicaciones adicionales.`;
 
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    const fullPrompt = `${systemPrompt}\n\nIdea: ${idea}`;
+
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            model: 'mixtral-8x7b-32768',
-            messages: [
+            contents: [
                 {
-                    role: 'system',
-                    content: systemPrompt,
-                },
-                {
-                    role: 'user',
-                    content: `Idea: ${idea}`,
+                    parts: [
+                        {
+                            text: fullPrompt,
+                        },
+                    ],
                 },
             ],
-            temperature: 0.7,
-            max_tokens: 1024,
+            generationConfig: {
+                temperature: 0.7,
+                maxOutputTokens: 1024,
+            },
         }),
     });
 
     if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error?.message || 'Error en la API de Groq');
+        throw new Error(error.error?.message || 'Error en la API de Google Gemini');
     }
 
     const data = await response.json();
-    return data.choices[0].message.content;
+
+    if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
+        throw new Error('Respuesta inesperada de la API');
+    }
+
+    return data.candidates[0].content.parts[0].text;
 }
 
 // Copy Prompt to Clipboard

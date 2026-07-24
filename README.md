@@ -8,18 +8,18 @@ Una aplicación web gratuita que transforma tus ideas en prompts profesionales y
 - ✅ **Múltiples Tonos**: Profesional, casual, técnico, creativo, académico
 - ✅ **Historial Local**: Guarda y recupera tus prompts generados
 - ✅ **Copiar y Exportar**: Copia al portapapeles o descarga como archivo
-- ✅ **100% Gratuito**: Usa la API gratis de Groq
+- ✅ **100% Gratuito**: Usa la API gratis de Google Gemini (sin tarjeta de crédito)
 - ✅ **Sin Backend**: Funciona completamente en el navegador
 - ✅ **Responsivo**: Optimizado para móvil y escritorio
 
 ## 🚀 Quick Start
 
-### 1. Obtener API Key (Gratis)
+### 1. Obtener API Key (Gratis - 2 minutos)
 
-1. Ve a [https://console.groq.com](https://console.groq.com)
-2. Crea una cuenta gratuita (5 minutos)
-3. Genera una API Key
-4. Copia la clave
+1. Ve a [https://aistudio.google.com/apikey](https://aistudio.google.com/apikey)
+2. Haz clic en "Create API Key"
+3. Selecciona "Create API key in new project"
+4. ¡Listo! Copia la clave que aparece
 
 ### 2. Usar la App
 
@@ -94,9 +94,9 @@ Resultado: Un prompt para obtener explicaciones técnicas detalladas
 
 ## 🤖 API Utilizada
 
-- **Proveedor:** [Groq](https://groq.com)
-- **Modelo:** Mixtral 8x7B (rápido y gratuito)
-- **Límites:** Gratuito con límites generosos para desarrollo
+- **Proveedor:** [Google Generative AI](https://ai.google.dev)
+- **Modelo:** Gemini 1.5 Flash (rápido y poderoso)
+- **Límites:** Gratuito sin tarjeta de crédito - 60 solicitudes por minuto
 
 ## 📱 Compatibilidad
 
@@ -116,13 +116,17 @@ MIT - Libre para usar y modificar
 ## 🆘 Solución de Problemas
 
 ### "Error: Invalid API Key"
-- Verifica que copiaste la clave correctamente
-- Crea una nueva clave en https://console.groq.com
-- Asegúrate de tener créditos disponibles
+- Verifica que copiaste la clave correctamente desde https://aistudio.google.com/apikey
+- Crea una nueva clave (toma 30 segundos)
+- Asegúrate de habilitar la API en Google Cloud Console
 
 ### "Error: Rate limit exceeded"
-- Espera algunos minutos
-- La API gratuita de Groq tiene límites de velocidad
+- Espera 1 minuto (límite: 60 solicitudes/minuto)
+- Es perfectamente normal, vuelve a intentar
+
+### "401 Unauthorized"
+- La API Key de Google cambió o es inválida
+- Genera una nueva en https://aistudio.google.com/apikey
 
 ### No se guarda el historial
 - Verifica que el navegador permite localStorage
@@ -130,4 +134,4 @@ MIT - Libre para usar y modificar
 
 ---
 
-Hecho con ❤️ | Powered by Groq API
+Hecho con ❤️ | Powered by Google Generative AI
