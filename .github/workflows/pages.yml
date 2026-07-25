@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["claude/install-repo-social-media-fmyv1j"]
+    branches: ["main", "claude/agenda-app-duplicates-r12me2", "claude/install-repo-social-media-fmyv1j"]
   workflow_dispatch:
 
 permissions:
