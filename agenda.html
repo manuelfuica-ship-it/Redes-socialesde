@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="description" content="Gestor de contactos con detección de duplicados">
+    <title>Agenda - Gestor de Contactos</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%236366f1' width='192' height='192'/><text x='50%' y='50%' font-size='120' fill='white' text-anchor='middle' dominant-baseline='central'>📱</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%236366f1' width='192' height='192'/><text x='50%' y='50%' font-size='120' fill='white' text-anchor='middle' dominant-baseline='central'>📱</text></svg>">
+    <link rel="stylesheet" href="css/agenda.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>📱 Mi Agenda</h1>
+            <div class="header-actions">
+                <button id="menuBtn" class="icon-btn" title="Menú">⚙️</button>
+            </div>
+        </header>
+
+        <!-- Tabs -->
+        <nav class="tabs">
+            <button class="tab active" data-tab="contacts">Contactos</button>
+            <button class="tab" data-tab="duplicates">Duplicados</button>
+            <button class="tab" data-tab="settings">Configuración</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Tab: Contactos -->
+            <section id="contacts-tab" class="tab-content active">
+                <div class="section-header">
+                    <input type="search" id="searchInput" class="search-input" placeholder="Buscar contacto...">
+                </div>
+
+                <div class="action-buttons">
+                    <button id="addContactBtn" class="btn btn-primary">+ Nuevo Contacto</button>
+                    <button id="importBtn" class="btn btn-secondary">📥 Importar</button>
+                </div>
+
+                <div id="contactsList" class="contacts-list">
+                    <div class="empty-state">
+                        <p>📭 No hay contactos</p>
+                        <small>Crea uno para comenzar</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab: Duplicados -->
+            <section id="duplicates-tab" class="tab-content">
+                <div class="action-buttons">
+                    <button id="scanDuplicatesBtn" class="btn btn-primary">🔍 Escanear Duplicados</button>
+                </div>
+                <div id="duplicatesList" class="duplicates-list">
+                    <div class="empty-state">
+                        <p>✅ Sin duplicados detectados</p>
+                        <small>Ejecuta un escaneo para verificar</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab: Configuración -->
+            <section id="settings-tab" class="tab-content">
+                <div class="settings-group">
+                    <h3>📊 Datos</h3>
+                    <button id="exportBtn" class="btn btn-secondary">📥 Exportar Contactos (CSV)</button>
+                    <button id="exportJsonBtn" class="btn btn-secondary">💾 Exportar JSON</button>
+                    <button id="backupBtn" class="btn btn-secondary">🔄 Crear Respaldo</button>
+                </div>
+
+                <div class="settings-group">
+                    <h3>⚠️ Peligro</h3>
+                    <button id="deleteAllBtn" class="btn btn-danger">🗑️ Eliminar Todo</button>
+                </div>
+
+                <div class="settings-group">
+                    <p class="version-text">Versión 1.0.0</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal: Agregar/Editar Contacto -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Nuevo Contacto</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nombre*</label>
+                    <input type="text" id="name" required placeholder="Nombre completo">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="tel" id="phone" placeholder="+34 XXX XX XX XX">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="email@ejemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="notes">Notas</label>
+                    <textarea id="notes" placeholder="Información adicional..." rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Fusionar Duplicados -->
+    <div id="mergeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Fusionar Contactos</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div id="mergeContent" class="merge-content"></div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="mergeCancelBtn">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="mergeMergeBtn">Fusionar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast"></div>
+
+    <script src="js/agenda.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .catch(err => console.log('SW registration failed:', err));
+        }
+    </script>
+</body>
+</html>
