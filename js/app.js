@@ -1,5 +1,4 @@
 // DOM Elements
-const apiKeyInput = document.getElementById('apiKey');
 const ideaInput = document.getElementById('ideaInput');
 const toneSelect = document.getElementById('tone');
 const generateBtn = document.getElementById('generateBtn');
@@ -17,12 +16,13 @@ const toast = document.getElementById('toast');
 // State
 let currentPrompt = '';
 let promptHistory = [];
+const OLLAMA_URL = 'http://localhost:11434';
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    loadApiKey();
     loadHistory();
     setupEventListeners();
+    checkOllamaStatus();
 });
 
 // Setup Event Listeners
@@ -32,28 +32,23 @@ function setupEventListeners() {
     exportBtn.addEventListener('click', exportPrompt);
     saveBtn.addEventListener('click', savePrompt);
     clearHistoryBtn.addEventListener('click', clearHistory);
-
-    apiKeyInput.addEventListener('change', saveApiKey);
 }
 
-// Save API Key to localStorage
-function saveApiKey() {
-    localStorage.setItem('groqApiKey', apiKeyInput.value);
-    showToast('API Key guardada', 'success');
-}
-
-// Load API Key from localStorage
-function loadApiKey() {
-    const savedKey = localStorage.getItem('groqApiKey');
-    if (savedKey) {
-        apiKeyInput.value = savedKey;
+// Check if Ollama is running
+async function checkOllamaStatus() {
+    try {
+        const response = await fetch(`${OLLAMA_URL}/api/tags`);
+        if (response.ok) {
+            showToast('✅ Ollama conectado', 'success');
+        }
+    } catch (error) {
+        showToast('⚠️ Ollama no detectado. Instálalo desde https://ollama.ai', 'error');
     }
 }
 
 // Generate Prompt
 async function generatePrompt() {
     const idea = ideaInput.value.trim();
-    const apiKey = apiKeyInput.value.trim();
     const tone = toneSelect.value;
 
     if (!idea) {
@@ -61,16 +56,10 @@ async function generatePrompt() {
         return;
     }
 
-    if (!apiKey) {
-        showToast('Por favor configura tu API Key de Groq', 'error');
-        apiKeyInput.focus();
-        return;
-    }
-
     showLoading(true);
 
     try {
-        const prompt = await callGroqAPI(idea, tone, apiKey);
+        const prompt = await callOllamaAPI(idea, tone);
         currentPrompt = prompt;
         promptOutput.textContent = prompt;
         outputSection.style.display = 'block';
@@ -84,8 +73,8 @@ async function generatePrompt() {
     }
 }
 
-// Call Google Generative AI API
-async function callGroqAPI(idea, tone, apiKey) {
+// Call Ollama API (local)
+async function callOllamaAPI(idea, tone) {
     const systemPrompt = `Eres un experto en la creación de prompts profesionales. Tu tarea es transformar ideas breves en prompts detallados, claros y efectivos.
 
 El tono del prompt debe ser: ${tone}
@@ -97,44 +86,34 @@ Genera un prompt profesional que:
 4. Sea conciso pero completo
 5. Esté optimizado para obtener respuestas de alta calidad
 
-Responde SOLO con el prompt generado, sin explicaciones adicionales.`;
+Responde SOLO con el prompt generado, sin explicaciones adicionales.
 
-    const fullPrompt = `${systemPrompt}\n\nIdea: ${idea}`;
+Idea: ${idea}`;
 
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`, {
+    const response = await fetch(`${OLLAMA_URL}/api/generate`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            contents: [
-                {
-                    parts: [
-                        {
-                            text: fullPrompt,
-                        },
-                    ],
-                },
-            ],
-            generationConfig: {
-                temperature: 0.7,
-                maxOutputTokens: 1024,
-            },
+            model: 'mistral',
+            prompt: systemPrompt,
+            stream: false,
+            temperature: 0.7,
         }),
     });
 
     if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error?.message || 'Error en la API de Google Gemini');
+        throw new Error('No se pudo conectar con Ollama. ¿Está ejecutándose?');
     }
 
     const data = await response.json();
 
-    if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
-        throw new Error('Respuesta inesperada de la API');
+    if (!data.response) {
+        throw new Error('Respuesta inesperada de Ollama');
     }
 
-    return data.candidates[0].content.parts[0].text;
+    return data.response.trim();
 }
 
 // Copy Prompt to Clipboard

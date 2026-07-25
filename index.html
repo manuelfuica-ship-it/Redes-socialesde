@@ -14,18 +14,21 @@
         </header>
 
         <main>
-            <!-- Configuración de API -->
+            <!-- Configuración de Ollama -->
             <section class="api-config">
-                <h2>Configuración</h2>
+                <h2>Requisito: Instalar Ollama</h2>
                 <div class="config-group">
-                    <label for="apiKey">API Key de Google Gemini (gratuita):</label>
-                    <input
-                        type="password"
-                        id="apiKey"
-                        placeholder="Obtén tu clave en https://aistudio.google.com/apikey"
-                        class="input-field"
-                    >
-                    <a href="https://aistudio.google.com/apikey" target="_blank" class="help-link">Obtener API Key gratis →</a>
+                    <p style="margin: 0; color: #2563eb; font-weight: 500;">
+                        La app funciona localmente con <strong>Ollama</strong> (gratis, sin conexión)
+                    </p>
+                    <br>
+                    <ol style="margin: 0; padding-left: 20px; color: #6b7280;">
+                        <li>Descarga Ollama: <a href="https://ollama.ai" target="_blank" class="help-link">https://ollama.ai</a></li>
+                        <li>Abre Terminal/CMD en tu PC</li>
+                        <li>Ejecuta: <code style="background: #f3f4f6; padding: 4px 8px; border-radius: 4px;">ollama pull mistral</code></li>
+                        <li>Ejecuta: <code style="background: #f3f4f6; padding: 4px 8px; border-radius: 4px;">ollama serve</code></li>
+                        <li>¡Ya está! La app se conectará automáticamente</li>
+                    </ol>
                 </div>
             </section>
 
