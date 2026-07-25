@@ -1,9 +1,9 @@
 const CACHE_NAME = 'agenda-v1';
 const URLS_TO_CACHE = [
-  '/Redes-socialesde/agenda.html',
-  '/Redes-socialesde/css/agenda.css',
-  '/Redes-socialesde/js/agenda.js',
-  '/Redes-socialesde/manifest.json'
+  './agenda.html',
+  './css/agenda.css',
+  './js/agenda.js',
+  './manifest.json'
 ];
 
 // Install event - cache assets
