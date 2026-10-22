@@ -98,11 +98,14 @@ App (CasinoSimulator)
 
 ## Próximas Fases
 
-### Fase 2: Blackjack
-- [ ] Lógica de juego (hit, stand, bust)
-- [ ] Renderizado de cartas
-- [ ] IA dealer
-- [ ] Sistema de apuestas
+### Fase 2: Blackjack ✅ COMPLETADO
+- [x] Lógica de juego completa (hit, stand, bust, blackjack)
+- [x] Renderizado de cartas (SVG inline)
+- [x] IA dealer con hit 17/stand 17+
+- [x] Sistema de apuestas y ganancias
+- [x] 6 posiciones de jugadores
+- [x] Página interactiva blackjack.html
+- [x] Estadísticas en tiempo real
 
 ### Fase 3: Ruleta
 - [ ] Lógica de ruleta
