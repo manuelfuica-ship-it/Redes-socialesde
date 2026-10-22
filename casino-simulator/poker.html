@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Póker - Casino Simulator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/poker.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🃏 Texas Hold'em</h1>
+                <p class="subtitle">Póker con IA inteligente</p>
+            </div>
+            <div class="header-stats">
+                <div class="stat-box">
+                    <span class="label">Balance Casino</span>
+                    <span class="value" id="casinoBalance">$0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">Manos Jugadas</span>
+                    <span class="value" id="handsPlayed">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Controles -->
+        <section class="controls">
+            <button id="createGameBtn" class="btn btn-primary">+ Nuevo Juego</button>
+            <button id="startBtn" class="btn btn-secondary" disabled>▶ Iniciar</button>
+            <button id="resetBtn" class="btn btn-danger">↻ Reset</button>
+
+            <div class="control-group">
+                <label for="numPlayersSelect">Jugadores:</label>
+                <select id="numPlayersSelect" class="select">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="6" selected>6</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Mesa -->
+        <section class="canvas-area">
+            <div id="pokerContainer" class="poker-container">
+                <!-- Mesa se crea aquí -->
+            </div>
+        </section>
+
+        <!-- Estadísticas -->
+        <section class="dashboard">
+            <div class="dashboard-section">
+                <h3>🏆 Jugadores Ranking</h3>
+                <div id="playersRanking" class="clients-list">
+                    <p class="placeholder">Sin datos</p>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <h3>📊 Estadísticas de la Mesa</h3>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <span class="stat-name">Pot Promedio</span>
+                        <span class="stat-value" id="avgPot">$0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-name">Ingresos Casino</span>
+                        <span class="stat-value" id="casinoIncome">$0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-name">Manos/Minuto</span>
+                        <span class="stat-value" id="handsPerMin">0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/lib/random.js"></script>
+    <script src="js/lib/storage.js"></script>
+    <script src="js/lib/currency.js"></script>
+    <script src="js/simulation/client.js"></script>
+    <script src="js/simulation/casino.js"></script>
+    <script src="js/simulation/games/poker.js"></script>
+    <script src="js/render/poker-renderer.js"></script>
+    <script src="js/poker-app.js"></script>
+</body>
+</html>

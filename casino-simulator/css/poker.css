@@ -1,0 +1,304 @@
+/* Poker Specific Styles */
+
+.poker-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 700px;
+  background: linear-gradient(135deg, rgba(26, 71, 42, 0.5) 0%, rgba(45, 122, 77, 0.5) 100%);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.poker-felt {
+  width: 100%;
+  max-width: 900px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, #0f5c2d 0%, #0a3a1a 100%);
+  border: 4px solid #ffb81c;
+  border-radius: 50%;
+  padding: 40px;
+  position: relative;
+  box-shadow:
+    inset 0 0 40px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(255, 184, 28, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Community Cards */
+.community-area {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.community-area h3 {
+  color: #ffb81c;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(255, 184, 28, 0.5);
+  letter-spacing: 2px;
+}
+
+.community-cards {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  min-height: 100px;
+  align-items: center;
+}
+
+.community-card {
+  animation: slideIn 0.3s ease;
+}
+
+.empty-slot {
+  width: 50px;
+  height: 70px;
+  border: 2px dashed rgba(255, 184, 28, 0.3);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Pot Display */
+.pot-display {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.pot-label {
+  color: #ffb81c;
+  font-size: 0.85em;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.pot-value {
+  color: #2ecc71;
+  font-size: 1.8em;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+/* Seats Circular Layout */
+.seats-circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.seat {
+  position: absolute;
+  width: 100px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 184, 28, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.seat.active {
+  background: rgba(255, 184, 28, 0.15);
+  border-color: #ffb81c;
+  box-shadow: 0 0 15px rgba(255, 184, 28, 0.3);
+  transform: scale(1.05);
+}
+
+.seat.folded {
+  opacity: 0.5;
+  border-color: #e74c3c;
+}
+
+/* Seat Positions (6 players in circle) */
+.seat-0 { top: 20px; left: 50%; transform: translateX(-50%); }
+.seat-1 { top: 80px; right: 40px; }
+.seat-2 { bottom: 80px; right: 40px; }
+.seat-3 { bottom: 20px; left: 50%; transform: translateX(-50%); }
+.seat-4 { bottom: 80px; left: 40px; }
+.seat-5 { top: 80px; left: 40px; }
+
+.player-name {
+  font-weight: bold;
+  font-size: 0.85em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.player-balance {
+  font-size: 0.75em;
+  color: #ffb81c;
+  font-weight: 600;
+}
+
+.player-hand {
+  display: flex;
+  gap: 4px;
+  margin: 4px 0;
+  min-height: 30px;
+  align-items: center;
+}
+
+.player-action {
+  font-size: 0.75em;
+  color: #2ecc71;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.player-action.show {
+  opacity: 1;
+  animation: pulse 0.6s ease;
+}
+
+/* Game Info */
+.game-info {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+}
+
+.round-info {
+  color: #ffb81c;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-shadow: 0 0 10px rgba(255, 184, 28, 0.5);
+}
+
+.action-player {
+  color: #ffffff;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+/* Animaciones */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .poker-felt {
+    height: auto;
+    aspect-ratio: 4/3;
+    padding: 30px;
+  }
+
+  .seat {
+    width: 85px;
+    height: 100px;
+    font-size: 0.85em;
+  }
+
+  .pot-display {
+    top: 20px;
+    padding: 10px 15px;
+  }
+
+  .game-info {
+    bottom: 30px;
+    padding: 10px 15px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 768px) {
+  .poker-table {
+    min-height: 500px;
+    padding: 10px;
+  }
+
+  .poker-felt {
+    padding: 20px;
+  }
+
+  .seat {
+    width: 70px;
+    height: 85px;
+    padding: 8px;
+    font-size: 0.75em;
+  }
+
+  .community-cards {
+    gap: 4px;
+  }
+
+  .empty-slot,
+  .community-card {
+    width: 40px;
+    height: 55px;
+  }
+}
+
+@media (max-width: 480px) {
+  .poker-table {
+    min-height: 400px;
+  }
+
+  .poker-felt {
+    border-width: 2px;
+    padding: 15px;
+  }
+
+  .seat {
+    width: 60px;
+    height: 75px;
+    font-size: 0.7em;
+  }
+
+  .empty-slot,
+  .community-card {
+    width: 35px;
+    height: 50px;
+    font-size: 0.7em;
+  }
+
+  .pot-label,
+  .round-info {
+    font-size: 0.9em;
+  }
+}

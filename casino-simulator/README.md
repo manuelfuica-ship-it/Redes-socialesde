@@ -128,10 +128,15 @@ App (CasinoSimulator)
 - [x] Tabs de navegación (Overview, Games, Players, Analytics)
 - [x] Page responsive dashboard.html
 
-### Fase 5: Póker (Bonus)
-- [ ] Lógica de póker
-- [ ] Decisiones IA complejas
-- [ ] Rondas de apuestas
+### Fase 5: Póker (Texas Hold'em) ✅ COMPLETADO
+- [x] Lógica Texas Hold'em completa
+- [x] Evaluación de manos (5-card best hand)
+- [x] Rankings: high card → straight flush
+- [x] Community cards (flop, turn, river)
+- [x] Hand strength evaluation para IA
+- [x] 6 posiciones de jugadores
+- [x] Pot management y rake (5% casino)
+- [x] Página interactiva poker.html
 
 ### Fase 6: Assets IA
 - [ ] Generación de imágenes
