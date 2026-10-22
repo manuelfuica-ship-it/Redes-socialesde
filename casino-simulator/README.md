@@ -107,11 +107,15 @@ App (CasinoSimulator)
 - [x] Página interactiva blackjack.html
 - [x] Estadísticas en tiempo real
 
-### Fase 3: Ruleta
-- [ ] Lógica de ruleta
-- [ ] Animación de giro
-- [ ] Sistema de apuestas
-- [ ] Tipos de apuesta
+### Fase 3: Ruleta ✅ COMPLETADO
+- [x] Lógica de ruleta (37 números: 0-36)
+- [x] Colores: verde (0), rojo/negro automático
+- [x] Animación de giro suave (ease-out cubic, ~10 vueltas)
+- [x] Sistema de apuestas múltiples (rojo, negro, par, impar, docenas, columnas)
+- [x] Payouts correctos (35:1 número, 1:1 color, 2:1 docena)
+- [x] Página interactiva roulette.html
+- [x] Estadísticas en tiempo real (distribución números)
+- [x] Historial de tiradas últimas 100
 
 ### Fase 4: Dashboard
 - [ ] Estadísticas avanzadas

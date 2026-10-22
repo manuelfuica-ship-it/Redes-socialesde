@@ -1,0 +1,320 @@
+/* Roulette Specific Styles */
+
+.roulette-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  background: linear-gradient(135deg, rgba(26, 71, 42, 0.3) 0%, rgba(45, 122, 77, 0.3) 100%);
+  padding: 30px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.roulette-wheel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.roulette-wheel canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.winning-number {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffb81c;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.winning-number.show {
+  opacity: 1;
+  animation: slideDown 0.5s ease;
+}
+
+/* Betting Area */
+.betting-area {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.betting-area h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 10px;
+}
+
+.bet-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.bet-btn {
+  padding: 12px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+  background: #ecf0f1;
+  color: var(--text);
+}
+
+.bet-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: var(--accent);
+}
+
+.bet-btn.red {
+  background: #ffebee;
+  color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.bet-btn.black {
+  background: #eceff1;
+  color: #2c3e50;
+  border-color: #2c3e50;
+}
+
+.bet-btn.green {
+  background: #e8f5e9;
+  color: #2ecc71;
+  border-color: #2ecc71;
+}
+
+.bet-btn.yellow {
+  background: #fff8e1;
+  color: #f39c12;
+  border-color: #f39c12;
+}
+
+/* Apuesta a número */
+.number-input {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.number-input label {
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.number-input .input {
+  width: 60px;
+}
+
+.number-input .btn {
+  flex-shrink: 0;
+}
+
+/* Controles de giro */
+.spin-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.spin-controls .btn {
+  flex: 1;
+  padding: 14px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* Resumen de apuestas */
+.bets-summary {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.bets-summary h4 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 0.95em;
+}
+
+.bets-list {
+  max-height: 150px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.bet-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.9em;
+}
+
+.bet-item span:first-child {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.bet-item span:last-child {
+  color: #f39c12;
+  font-weight: 600;
+}
+
+.total-bet {
+  padding-top: 10px;
+  border-top: 2px solid var(--primary);
+  font-weight: bold;
+  color: var(--primary);
+  font-size: 1em;
+}
+
+/* Resultados */
+.results {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.results h4 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 0.95em;
+}
+
+.results-list {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.result-item.win {
+  background: #e8f5e9;
+  color: #2ecc71;
+}
+
+.result-item.loss {
+  background: #ffebee;
+  color: #e74c3c;
+}
+
+.placeholder {
+  color: var(--text-light);
+  font-style: italic;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9em;
+}
+
+/* Animaciones */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .roulette-table {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .roulette-table {
+    padding: 15px;
+  }
+
+  .betting-area {
+    padding: 15px;
+  }
+
+  .bet-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .bet-btn {
+    padding: 10px;
+    font-size: 0.85em;
+  }
+
+  .number-input {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .number-input .input {
+    width: 100%;
+  }
+
+  .spin-controls {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .roulette-table {
+    padding: 10px;
+  }
+
+  .roulette-wheel {
+    padding: 10px;
+  }
+
+  .bet-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .betting-area h3,
+  .bets-summary h4,
+  .results h4 {
+    font-size: 0.95em;
+  }
+}
