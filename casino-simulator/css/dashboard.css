@@ -1,0 +1,371 @@
+/* Dashboard Specific Styles */
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* KPI Cards */
+.kpi-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.kpi-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid var(--primary);
+  transition: all 0.3s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.kpi-label {
+  font-size: 0.9em;
+  color: var(--text-light);
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kpi-value {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.kpi-trend {
+  font-size: 0.85em;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.kpi-trend.positive {
+  color: #2ecc71;
+}
+
+.kpi-trend.negative {
+  color: #e74c3c;
+}
+
+/* Charts Section */
+.charts-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.chart-container {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container h3 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 10px;
+}
+
+.chart-container canvas {
+  width: 100%;
+  height: auto;
+}
+
+/* Tables Section */
+.tables-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.table-info,
+.players-ranking {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-info h3,
+.players-ranking h3 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 10px;
+}
+
+.tables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.table-card {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  border-radius: 8px;
+  padding: 15px;
+  border-left: 3px solid var(--accent);
+  font-size: 0.85em;
+}
+
+.table-card.active {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border-color: #2ecc71;
+}
+
+.table-card.idle {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  border-color: #f39c12;
+}
+
+.table-name {
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.table-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.table-stat .label {
+  color: var(--text-light);
+}
+
+.table-stat .value {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Players Ranking */
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.ranking-item {
+  display: grid;
+  grid-template-columns: 40px 1fr 80px;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  border-left: 3px solid var(--accent);
+}
+
+.rank {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: var(--primary);
+  text-align: center;
+}
+
+.player-info {
+  min-width: 0;
+}
+
+.player-info .name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.player-info .stats {
+  font-size: 0.8em;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.profit {
+  font-weight: bold;
+  text-align: right;
+  font-size: 0.9em;
+}
+
+.profit.positive {
+  color: #2ecc71;
+}
+
+.profit.negative {
+  color: #e74c3c;
+}
+
+/* Transaction History */
+.history-section {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.history-section h3 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 10px;
+}
+
+.transaction-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.transaction-item {
+  display: grid;
+  grid-template-columns: 70px 1fr 120px;
+  gap: 15px;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.9em;
+}
+
+.transaction-item .time {
+  font-family: monospace;
+  color: var(--text-light);
+  font-size: 0.85em;
+}
+
+.transaction-item .description {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.transaction-item .amount {
+  font-weight: bold;
+  text-align: right;
+}
+
+.transaction-item .amount.positive {
+  color: #2ecc71;
+}
+
+.transaction-item .amount.negative {
+  color: #e74c3c;
+}
+
+/* Casino Controls */
+.casino-controls {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.casino-controls h3 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 10px;
+}
+
+.controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.control-group label {
+  font-weight: 600;
+  font-size: 0.9em;
+  color: var(--text);
+}
+
+.control-group .input,
+.control-group .select {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.help-text {
+  font-size: 0.75em;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.placeholder {
+  color: var(--text-light);
+  font-style: italic;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9em;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .kpi-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .charts-section,
+  .tables-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-main {
+    gap: 20px;
+  }
+
+  .kpi-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .kpi-card {
+    padding: 15px;
+  }
+
+  .chart-container,
+  .table-info,
+  .players-ranking,
+  .history-section,
+  .casino-controls {
+    padding: 15px;
+  }
+
+  .controls-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ranking-item,
+  .transaction-item {
+    grid-template-columns: 1fr;
+  }
+
+  .rank,
+  .profit,
+  .transaction-item .time {
+    text-align: left;
+  }
+}
