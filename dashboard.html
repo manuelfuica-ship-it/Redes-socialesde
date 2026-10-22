@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Casino Simulator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>📊 Dashboard del Casino</h1>
+                <p class="subtitle">Control en tiempo real de todas las mesas y jugadores</p>
+            </div>
+            <div class="header-stats">
+                <div class="stat-box">
+                    <span class="label">Estado</span>
+                    <span class="value" id="casinoStatus">Parado</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">Uptime</span>
+                    <span class="value" id="casinoUptime">00:00:00</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="overview">📈 Visión General</button>
+            <button class="nav-tab" data-tab="games">🎰 Juegos</button>
+            <button class="nav-tab" data-tab="players">👥 Jugadores</button>
+            <button class="nav-tab" data-tab="analytics">📊 Analytics</button>
+            <button class="nav-tab" data-tab="settings">⚙️ Configuración</button>
+        </nav>
+
+        <!-- Main Dashboard Content -->
+        <main class="dashboard-content">
+            <div id="dashboardContainer"></div>
+        </main>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <button id="startSimBtn" class="btn btn-primary">▶ Iniciar Simulación</button>
+            <button id="stopSimBtn" class="btn btn-secondary" disabled>⏹ Detener</button>
+            <button id="refreshBtn" class="btn btn-secondary">🔄 Refrescar</button>
+        </section>
+    </div>
+
+    <!-- Styles para tabs -->
+    <style>
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            padding: 10px 15px;
+            border: none;
+            background: #f0f0f0;
+            color: var(--text);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .nav-tab:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .nav-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .dashboard-content {
+            margin-bottom: 20px;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .quick-actions .btn {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+
+            .nav-tab {
+                flex: 1;
+                min-width: 80px;
+                font-size: 0.85em;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+            }
+
+            .quick-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script src="js/lib/random.js"></script>
+    <script src="js/lib/storage.js"></script>
+    <script src="js/lib/currency.js"></script>
+    <script src="js/simulation/client.js"></script>
+    <script src="js/simulation/casino.js"></script>
+    <script src="js/simulation/games/blackjack.js"></script>
+    <script src="js/simulation/games/roulette.js"></script>
+    <script src="js/render/dashboard-renderer.js"></script>
+    <script src="js/dashboard-app.js"></script>
+</body>
+</html>

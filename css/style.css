@@ -1,0 +1,392 @@
+/* Casino Simulator Styles */
+
+:root {
+  --primary: #1a472a;
+  --primary-dark: #0f2818;
+  --primary-light: #2d7a4d;
+  --accent: #ffb81c;
+  --accent-dark: #d99f00;
+  --success: #2ecc71;
+  --danger: #e74c3c;
+  --warning: #f39c12;
+  --dark: #2c3e50;
+  --light: #ecf0f1;
+  --text: #2c3e50;
+  --text-light: #7f8c8d;
+  --border: #bdc3c7;
+  --bg: #f5f5f5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.header h1 {
+  font-size: 2em;
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: var(--text-light);
+  font-size: 0.9em;
+}
+
+.header-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.stat-box {
+  background: var(--primary);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.stat-box .label {
+  display: block;
+  font-size: 0.8em;
+  opacity: 0.9;
+  margin-bottom: 5px;
+}
+
+.stat-box .value {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+/* Controls */
+.controls {
+  background: white;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 71, 42, 0.3);
+}
+
+.btn-secondary {
+  background: var(--light);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--text);
+  color: white;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #c0392b;
+}
+
+.btn-small {
+  padding: 8px 12px;
+  font-size: 0.85em;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.control-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.control-group label {
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.select, .input {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.input {
+  width: 60px;
+}
+
+/* Canvas Area */
+.canvas-area {
+  background: var(--primary);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  min-height: 400px;
+}
+
+.tables-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.table-box {
+  background: var(--primary-light);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  padding: 15px;
+  color: white;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.table-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 8px;
+}
+
+.table-info {
+  font-size: 0.9em;
+  margin: 5px 0;
+}
+
+.table-players {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  font-size: 0.85em;
+}
+
+.player-item {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 6px 8px;
+  margin: 4px 0;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.player-name {
+  font-weight: 600;
+}
+
+.player-balance {
+  color: var(--accent);
+}
+
+/* Dashboard */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.dashboard-section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-section h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 10px;
+}
+
+.event-log {
+  max-height: 250px;
+  overflow-y: auto;
+  font-size: 0.85em;
+}
+
+.event-item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-light);
+}
+
+.event-item.income {
+  color: var(--success);
+}
+
+.event-item.expense {
+  color: var(--danger);
+}
+
+.clients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.client-item {
+  background: var(--bg);
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.client-name {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.client-balance {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.stat {
+  background: var(--bg);
+  padding: 15px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.stat-name {
+  display: block;
+  font-size: 0.8em;
+  color: var(--text-light);
+  margin-bottom: 5px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.3em;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.placeholder {
+  color: var(--text-light);
+  font-style: italic;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9em;
+}
+
+.timestamp {
+  margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-stats {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  .btn, .select, .input {
+    width: 100%;
+  }
+
+  .tables-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animaciones */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  animation: spin 1s linear infinite;
+}
