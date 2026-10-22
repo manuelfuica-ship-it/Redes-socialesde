@@ -3,99 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Prompts Profesionales</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Casino Simulator 🎰</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; background: #1a1a2e; color: white; }
+        h1 { color: #ffed4e; }
+        a { color: #00d4ff; text-decoration: none; font-size: 18px; margin: 10px; display: block; }
+        a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Generador de Prompts</h1>
-            <p class="subtitle">Transforma tus ideas en prompts profesionales</p>
-        </header>
-
-        <main>
-            <!-- Configuración de Ollama -->
-            <section class="api-config">
-                <h2>Requisito: Instalar Ollama</h2>
-                <div class="config-group">
-                    <p style="margin: 0; color: #2563eb; font-weight: 500;">
-                        La app funciona localmente con <strong>Ollama</strong> (gratis, sin conexión)
-                    </p>
-                    <br>
-                    <ol style="margin: 0; padding-left: 20px; color: #6b7280;">
-                        <li>Descarga Ollama: <a href="https://ollama.ai" target="_blank" class="help-link">https://ollama.ai</a></li>
-                        <li>Abre Terminal/CMD en tu PC</li>
-                        <li>Ejecuta: <code style="background: #f3f4f6; padding: 4px 8px; border-radius: 4px;">ollama pull mistral</code></li>
-                        <li>Ejecuta: <code style="background: #f3f4f6; padding: 4px 8px; border-radius: 4px;">ollama serve</code></li>
-                        <li>¡Ya está! La app se conectará automáticamente</li>
-                    </ol>
-                </div>
-            </section>
-
-            <!-- Entrada de idea -->
-            <section class="input-section">
-                <h2>Tu Idea</h2>
-                <textarea
-                    id="ideaInput"
-                    placeholder="Describe brevemente tu idea o concepto para el prompt..."
-                    class="textarea-field"
-                    rows="4"
-                ></textarea>
-
-                <div class="input-controls">
-                    <div class="tone-selector">
-                        <label for="tone">Tono del prompt:</label>
-                        <select id="tone" class="select-field">
-                            <option value="profesional">Profesional</option>
-                            <option value="casual">Casual</option>
-                            <option value="técnico">Técnico</option>
-                            <option value="creativo">Creativo</option>
-                            <option value="académico">Académico</option>
-                        </select>
-                    </div>
-
-                    <button id="generateBtn" class="btn btn-primary">
-                        Generar Prompt
-                    </button>
-                </div>
-            </section>
-
-            <!-- Prompt generado -->
-            <section class="output-section" id="outputSection" style="display: none;">
-                <h2>Prompt Generado</h2>
-                <div class="prompt-display">
-                    <div id="promptOutput" class="prompt-text"></div>
-
-                    <div class="prompt-actions">
-                        <button id="copyBtn" class="btn btn-secondary">📋 Copiar</button>
-                        <button id="exportBtn" class="btn btn-secondary">⬇️ Exportar</button>
-                        <button id="saveBtn" class="btn btn-secondary">💾 Guardar</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Historial de prompts guardados -->
-            <section class="history-section" id="historySection" style="display: none;">
-                <h2>Prompts Guardados</h2>
-                <div id="historyList" class="history-list"></div>
-                <button id="clearHistoryBtn" class="btn btn-danger">🗑️ Limpiar Historial</button>
-            </section>
-        </main>
-
-        <footer>
-            <p>Powered by Google Generative AI</p>
-        </footer>
-    </div>
-
-    <!-- Loading spinner -->
-    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
-        <div class="spinner"></div>
-        <p>Generando prompt profesional...</p>
-    </div>
-
-    <!-- Toast notifications -->
-    <div id="toast" class="toast"></div>
-
-    <script src="js/app.js"></script>
+    <h1>🎰 Casino Simulator</h1>
+    <p>Selecciona un juego:</p>
+    <a href="https://manuelfuica-ship-it.github.io/Redes-socialesde/inicio.html">🏠 Página de Inicio</a>
+    <a href="https://manuelfuica-ship-it.github.io/Redes-socialesde/blackjack.html">🂡 Blackjack</a>
+    <a href="https://manuelfuica-ship-it.github.io/Redes-socialesde/roulette.html">🎡 Ruleta</a>
+    <a href="https://manuelfuica-ship-it.github.io/Redes-socialesde/poker.html">🃏 Póker</a>
+    <a href="https://manuelfuica-ship-it.github.io/Redes-socialesde/dashboard.html">📊 Dashboard</a>
 </body>
 </html>
