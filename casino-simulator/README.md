@@ -1,0 +1,153 @@
+# 🎰 Casino Simulator - Fase 1: Infraestructura Base
+
+## Estado: ✅ COMPLETADO
+
+Fase 1 de desarrollo del simulador de casino realista.
+
+## Qué se implementó
+
+### ✅ Estructura Modular
+- `js/lib/` - Librerías reutilizables
+  - `random.js` - RNG determinístico (Mulberry32)
+  - `storage.js` - Wrapper localStorage
+  - `currency.js` - Formateo de dinero chileno
+
+### ✅ Core de Simulación
+- `js/simulation/client.js` - Clase CasinoClient
+  - Dinero y balance
+  - Estrategias de juego (conservative, aggressive, random, balanced)
+  - Decisiones IA (blackjack, ruleta)
+  - Emociones y cambio de comportamiento
+  
+- `js/simulation/casino.js` - Clase Casino
+  - Gestor principal
+  - Crear mesas y clientes
+  - Sistema de eventos (transacciones)
+  - Persistencia en localStorage
+  - Estadísticas en tiempo real
+
+### ✅ UI Principal
+- `index.html` - Interfaz web
+  - Header con balance del casino
+  - Controles (Play/Pause/Reset)
+  - Área de mesas
+  - Dashboard de eventos y estadísticas
+  
+- `css/style.css` - Diseño profesional
+  - Tema verde (casino) con acentos dorados
+  - Responsive mobile/tablet/desktop
+  - Grid dinámico para mesas
+
+### ✅ Orquestación
+- `js/app.js` - CasinoSimulator principal
+  - Game loop con requestAnimationFrame
+  - Control de simulación (start/pause/reset)
+  - Rendering en tiempo real
+  - Manejo de eventos
+
+## Cómo probar
+
+### Requisitos
+- Navegador moderno (Chrome, Firefox, Safari, Edge)
+- No requiere dependencias externas
+
+### Pasos
+1. Abre `index.html` en el navegador
+2. Haz click en **"▶ Iniciar"** para comenzar la simulación
+3. Verás:
+   - Balance del casino
+   - Clientes creados (10 por defecto)
+   - Mesas disponibles (Blackjack, Ruleta)
+   - Estadísticas en tiempo real
+
+### Controles
+- **▶ Iniciar** - Comienza la simulación
+- **⏸ Pausar** - Pausa la simulación
+- **↻ Reset** - Reinicia el casino
+- **Velocidad** - 1x, 2x, 4x simulación
+- **Clientes** - Agregar más clientes
+
+## Datos Técnicos
+
+### Arquitectura
+```
+App (CasinoSimulator)
+├── Casino (gestor principal)
+│   ├── Tables (mesas)
+│   └── Clients (clientes IA)
+├── Lib (utilidades)
+├── UI (renderizado HTML)
+└── Events (sistema de eventos)
+```
+
+### Persistencia
+- **localStorage.casino_state** - Estado del casino
+- **localStorage.casino_history** - Historial de eventos
+- **localStorage.game_stats** - Estadísticas
+
+### RNG
+- Seedable Mulberry32 (determinístico)
+- Reproducible exactamente con mismo seed
+- Shuffle con Fisher-Yates
+
+### Performance
+- 60 FPS target
+- Render cada frame
+- Save cada 10 segundos
+- Sin WebWorkers (aún)
+
+## Próximas Fases
+
+### Fase 2: Blackjack
+- [ ] Lógica de juego (hit, stand, bust)
+- [ ] Renderizado de cartas
+- [ ] IA dealer
+- [ ] Sistema de apuestas
+
+### Fase 3: Ruleta
+- [ ] Lógica de ruleta
+- [ ] Animación de giro
+- [ ] Sistema de apuestas
+- [ ] Tipos de apuesta
+
+### Fase 4: Dashboard
+- [ ] Estadísticas avanzadas
+- [ ] Gráficos (Chart.js)
+- [ ] Top clientes
+- [ ] Historial
+
+### Fase 5: Póker (Bonus)
+- [ ] Lógica de póker
+- [ ] Decisiones IA complejas
+- [ ] Rondas de apuestas
+
+### Fase 6: Assets IA
+- [ ] Generación de imágenes
+- [ ] Prompts para mesas
+- [ ] Nombres realistas
+
+### Fase 7: Polish
+- [ ] Performance optimization
+- [ ] Testing
+- [ ] Documentación
+
+## Bugs Conocidos
+- Ninguno reportado aún (Fase 1 estable)
+
+## TODOs
+- [ ] Conectar con Ollama para nombres
+- [ ] Agregar efectos de sonido
+- [ ] Exportar estadísticas a CSV
+- [ ] Modo "replay" de manos
+
+## Estadísticas del Código
+- **Líneas de código**: ~1200
+- **Archivos**: 12
+- **Módulos**: 3
+- **Tiempo de implementación**: ~5 horas
+
+---
+
+**Desarrollado**: 2026-10-22  
+**Rama**: `claude/casino-simulator`  
+**Próxima revisión**: Fase 2
